@@ -4,7 +4,7 @@ import DadosUsuario from "./DadosUsuario";
 import DadosEntrega from "./DadosEntrega";
 import { Step, StepLabel, Stepper, Typography } from "@mui/material";
 
-function FormularioCadastro({aoEnviar, validarCPF}) {
+function FormularioCadastro({aoEnviar}) {
     const [etapaAtual, setEtapaAtual] = useState(0);
     const [dadosColetados, setDados] = useState({});
     useEffect(()=>{
@@ -13,9 +13,11 @@ function FormularioCadastro({aoEnviar, validarCPF}) {
         }
         
     })
-    const formularios = [<DadosUsuario aoEnviar={coletarDados}/>, 
-    <DadosPessoais aoEnviar={coletarDados} validarCPF={validarCPF}/>, 
-    <DadosEntrega aoEnviar={coletarDados}/>, <Typography variant="h5">Obrigado pelo cadastro</Typography>
+    const formularios = [
+    <DadosUsuario aoEnviar={coletarDados}/>, 
+    <DadosPessoais aoEnviar={coletarDados}/>, 
+    <DadosEntrega aoEnviar={coletarDados}/>, 
+    <Typography variant="h5">Obrigado pelo cadastro</Typography>
 ];
     function coletarDados(dados){
         setDados({...dadosColetados, ...dados});
